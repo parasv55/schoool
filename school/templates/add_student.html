@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <title>Student Add Page</title>
+
+    <style>
+        body{
+            background-image: linear-gradient(120deg,#8e44ad,#3498db);
+            
+
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <form method="POST">
+    User Add
+    {% csrf_token %}
+        {{ form. }}
+    <input type="submit">
+</form> -->
+
+<form method="POST" class="login-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form. }}
+    <h1>Sign Up</h1>
+    
+    <div class="txtb">
+        <input type="email" name="email">
+        <span data-placeholder="email" ></span>
+    </div>
+
+    <div class="txtb">
+        <input type="password" name="password">
+        <span data-placeholder="Password" ></span>
+    </div>
+
+    <input type="file" id="img" name="image" accept="image/*" id="id_image">
+    <br><br>    
+
+    <!-- <div class="txtb">
+        <input type="file" name="image" accept="image/*">
+        <span data-placeholder="image" ></span>
+
+    </div> -->
+
+    <input type="submit" class="logbtn" value="Sigh Up">
+    
+    <div class="bottom-text">
+        <a href="{% url 'student_app:student_user' %}"><b>Login</b></a><br><br>
+        <a href="{% url 'teacher_app:teacher_signup' %}"><b>SignUp as Teacher</b></a>
+    </div>
+
+
+</form>
+<script type="text/javascript">
+    $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+    })
+
+    $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+    })
+
+</script>
+
+</body>
+</html>
